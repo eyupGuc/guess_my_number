@@ -29,12 +29,23 @@ document.querySelector(".check-btn").addEventListener("click", () => {
     document.querySelector(".secret-number").textContent = randomNumber;
     //! eger rastgele!==input.value
   } else {
-    // score -= 1;
     score--;
-    guessInput > randomNumber
-      ? (msg.innerText = "DECREASE")
-      : (msg.innerText = "INCREASE");
+    if (score > 0) {
+      guessInput > randomNumber
+        ? (msg.innerHTML = `<i class="fa-solid fa-arrow-trend-down"></i> DECREASE `)
+        : (msg.innerHTML = `<i class="fa-solid fa-arrow-trend-up"></i> INCREASE `);
+    } else {
+      msg.innerHTML = `You Lost <i class="fa-regular fa-face-sad-tear fa-2x"></i>`;
+      body.className = "bg-danger";
+      document.querySelector(".check-btn").disabled = true;
+    }
+
+    document.querySelector(".score").textContent = score;
   }
+
+  //* again basıldığında oyunu baslangıç değerine kur
+
+document.querySelector(".again-btn").
 });
 
 //? eger input girilmediyse
