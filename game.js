@@ -65,6 +65,14 @@ document.querySelector(".check-btn").addEventListener("click", () => {
   });
 });
 
+//? Enter tuşunu bağlama.
+
+document.querySelector(".guess-input").addEventListener("keydown", (e) => {
+  if (e.code === "Enter") {
+    document.querySelector(".check-btn").click();
+  }
+});
+//pseduo
 //? eger input girilmediyse
 //? kullanıcıya uyarı ver
 
