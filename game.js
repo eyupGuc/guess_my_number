@@ -6,7 +6,13 @@ let randomNumber = Math.round(Math.random() * 100);
 console.log(randomNumber);
 
 let score = 10;
-let topScore = 0;
+// let topScore = 0;
+
+//? LocalStorage'de topScore adiyla değişken olusturur.
+let topScore = localStorage.getItem("topScore") || 0;
+// console.log(localStorage.getItem("topScore"));
+// console.log(topScore);
+document.querySelector(".top-score").textContent = topScore;
 
 //* CheckBtn basıldığında kontrolleri yap
 
@@ -22,9 +28,10 @@ document.querySelector(".check-btn").addEventListener("click", () => {
   } else if (randomNumber === guessInput) {
     msg.innerHTML = `Congrats you win <i class="fa-solid fa-face-grin-hearts fa-2x"></i>`;
     body.className = "bg-success";
-    if (score > topScore) {
-      topScore = score;
-      document.querySelector(".top-score").textContent = topScore;
+    if (score >= topScore) {
+      //   topScore = score;
+      localStorage.setItem("topScore", score);
+      document.querySelector(".top-score").textContent = score;
     }
     document.querySelector(".secret-number").textContent = randomNumber;
     //! eger rastgele!==input.value
@@ -77,3 +84,6 @@ document.querySelector(".check-btn").addEventListener("click", () => {
 //?ARTTIR
 //!değilse
 //?uzgunuz kaybettiniz
+
+myObj = { a: 1, b: 2, c: 3 };
+localStorage.setItem("OBJ", JSON.stringify(myObj));
